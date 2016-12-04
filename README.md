@@ -39,6 +39,11 @@ echo 'export PATH=~/.npm-global/bin:$PATH' >>~/.profile | source ~/.profile
 ```
 npm install -g jshint
 ```
+### Install the telegram-bot-api
+```
+npm install -g telegram-bot-api
+```
+
 ##  Python installations
 
 ```
