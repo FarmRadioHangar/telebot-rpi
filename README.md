@@ -14,8 +14,11 @@ Telegram bots controlling raspberry pis
 
 ## Node installations
 
+Taken from [Beginners guide to installing nodejs on rpi](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/)
 ```
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+sudo apt install nodejs
+node -v
 ```
 
 ##  Python installations
@@ -25,3 +28,10 @@ sudo apt-get install python-pip
 sudo pip install telepot
 ```
 
+
+## setting up some things for the rPi
+
+### The usb webcam
+```
+sudo apt-get install fswebcam
+```
