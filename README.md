@@ -18,6 +18,8 @@ Telegram bots controlling raspberry pis
 
 ##  Python installations
 
-```sudo apt-get install python-pip
-sudo pip install telepot```
+```bash
+sudo apt-get install python-pip
+sudo pip install telepot
+```
 
