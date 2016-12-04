@@ -11,3 +11,13 @@ Telegram bots controlling raspberry pis
   * __say__: Synthesize some text2speech into an audio file and play it on a speaker.
   * __play__: Play an incoming telegram voice message or audio file on a speaker (may not require a keywork/command).
 4. Link the above routines to a node server running with a restful API
+
+## Node installations
+
+`curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -`
+
+##  Python installations
+
+`sudo apt-get install python-pip`
+`sudo pip install telepot`
+
