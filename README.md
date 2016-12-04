@@ -31,15 +31,11 @@ mkdir ~/.npm-global
 ```
 npm config set prefix '~/.npm-global'
 ```
-* Append to your ~/.profile file:
+* Append to your ~/.profile file and update your system variables:
 ```
-echo 'export PATH=~/.npm-global/bin:$PATH' >>~/.profile
+echo 'export PATH=~/.npm-global/bin:$PATH' >>~/.profile | source ~/.profile
 ```
-4. Back on the command line, update your system variables:
-```
- source ~/.profile
- ```
-5.Test: Download a package globally without using sudo.
+* Test: Download a package globally without using sudo.
 ```
 npm install -g jshint
 ```
