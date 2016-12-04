@@ -33,7 +33,8 @@ npm config set prefix '~/.npm-global'
 ```
 * Append to your ~/.profile file and update your system variables:
 ```
-echo 'export PATH=~/.npm-global/bin:$PATH' >>~/.profile | source ~/.profile
+echo 'export PATH=~/.npm-global/bin:$PATH' >>~/.profile
+echo 'export NODE_PATH=~/.npm-global/lib/node_modules' >>~/.profile | source ~/.profile
 ```
 * Test: Download a package globally without using sudo.
 ```
