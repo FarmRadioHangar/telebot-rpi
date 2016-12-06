@@ -90,3 +90,6 @@ sudo apt-get install fswebcam
 * Once it is working on the master
 * accept pull requests and merge?
 * Then each group can test on their own pis the functions the others have created.
+
+## Turn webcam into gifcam instead!
+* https://hackaday.io/project/16358-pix-e-gif-camera
