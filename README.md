@@ -12,6 +12,11 @@ Telegram bots controlling raspberry pis
   * __play__: Play an incoming telegram voice message or audio file on a speaker (may not require a keywork/command).
 4. Link the above routines to a node server running with a restful API
 
+## Libraries we will use:
+
+* https://www.npmjs.com/package/rpi-gpio
+
+
 ## Node installations
 
 Taken from [Beginners guide to installing nodejs on rpi](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/)
