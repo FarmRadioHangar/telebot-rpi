@@ -34,6 +34,8 @@ Telegram bots controlling raspberry pis
 
 
 
+
+
 ## Node installations
 
 Taken from [Beginners guide to installing nodejs on rpi](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/)
@@ -81,3 +83,10 @@ sudo pip install telepot
 ```
 sudo apt-get install fswebcam
 ```
+
+# A few ideas for bonus:
+* Create a branch for each group in the repository 
+* Each team pulls their respective repository 
+* Once it is working on the master
+* accept pull requests and merge?
+* Then each group can test on their own pis the functions the others have created.
