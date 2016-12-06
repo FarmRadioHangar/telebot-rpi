@@ -14,6 +14,9 @@ Telegram bots controlling raspberry pis
 
 ## Libraries we will use:
 
+### For controlling Telegram bot API
+* https://github.com/yagop/node-telegram-bot-api
+
 ### For GPIO and LED manipulation
 * https://github.com/JamesBarwell/rpi-gpio.js
 
