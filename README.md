@@ -93,3 +93,5 @@ sudo apt-get install fswebcam
 
 ## Turn webcam into gifcam instead!
 * https://hackaday.io/project/16358-pix-e-gif-camera
+
+## Make the bot run in inline mode!
