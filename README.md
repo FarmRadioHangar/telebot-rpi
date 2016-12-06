@@ -14,7 +14,21 @@ Telegram bots controlling raspberry pis
 
 ## Libraries we will use:
 
-* https://www.npmjs.com/package/rpi-gpio
+### For GPIO and LED manipulation
+* https://github.com/JamesBarwell/rpi-gpio.js
+
+### For the Displayotron HAT
+* https://github.com/jorisvervuurt/JVSDisplayOTron
+
+### For text to speech
+* https://github.com/zlargon/google-tts
+
+### For Webcam capture
+* https://www.npmjs.com/package/node-webcam
+
+### For Playing audio on the Pi
+* https://github.com/Ap0c/node-omxplayer
+
 
 
 ## Node installations
