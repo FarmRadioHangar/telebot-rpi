@@ -26,6 +26,7 @@ Create some cool routines on our rpi that will be executed via your bot command 
 
 ### For GPIO and LED manipulation
 * https://github.com/JamesBarwell/rpi-gpio.js
+* For GPIO pin reference use: https://pinout.xyz/
 
 ### For the Displayotron HAT
 * https://github.com/jorisvervuurt/JVSDisplayOTron
