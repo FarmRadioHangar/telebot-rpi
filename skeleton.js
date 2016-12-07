@@ -23,7 +23,7 @@ var googleTTS       = require('google-tts-api');
 var NodeWebcam      = require('node-webcam');
 
 /* Insert the Telegram token you received from @BotFather here */
-var token = 'insert_token_here';
+var token = '293313214:AAFwlEruamuMSRpDs7R40FQ4SaOphlhJh_0';
 
 /* Instantiate the bot */
 var bot = new TelegramBot(token, { polling: true });
@@ -45,12 +45,50 @@ var bot = new TelegramBot(token, { polling: true });
  * where color should be one of red, green, blue, or rainbow.
  *
  */
-bot.onText(/\/display\s(red|green|blue|rainbow)\s(.+)/, function(message, match) {
+bot.onText(/\/display\s(red|green|blue|rainbow|yellow)\s(.+)/, function(message, match) {
+
+  var dothat = new JVSDisplayOTron.DOTHAT();
+
+  // Set the display contrast to a better-readable value.
+  dothat.lcd.setContrast(45);
+
+
+  // Set all backlight LEDs to a hue value of 0.5.
+  dothat.backlight.setToHue(0.6);
 
   var chatId = message.chat.id;
 
   var color = match[1];
   var text  = match[2];    // The text to display
+
+  console.log(color)
+  console.log(text);
+
+  switch (color) {
+
+    case 'red':
+      dothat.backlight.setToRGB(255, 0, 0);
+      break;
+
+    case 'blue':
+      dothat.backlight.setToRGB(0, 0, 255);
+      break;
+
+    case 'green':
+      dothat.backlight.setToRGB(0, 255, 0);
+      break;
+
+    case 'yellow':
+      dothat.backlight.setToRGB(255, 255, 0);
+      break;
+    
+    default:
+      dothat.backlight.setToRGB(255, 255, 255);
+      break;
+      
+  }
+
+  dothat.lcd.write(text);
 
   // Insert your implementation here using the JVSDisplayOTron library.
 
