@@ -5,7 +5,7 @@ Telegram bots controlling raspberry pis
 
 1. Setup a Telegram Bot by searching for [@BotFather](https://telegram.me/BotFather) on Telegram and following the instructions
 2. Form into groups: Earth, Wind and Fire groups.
-3. SSH into your pi using raspberry as the password:
+3. SSH into your pi using `raspberry` as the password:
   * `ssh pi@earthpi.local`
   * `ssh pi@windpi.local`
   * `ssh pi@firepi.local`
