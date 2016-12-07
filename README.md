@@ -29,6 +29,7 @@ Create some cool routines on our rpi that will be executed via your bot command 
 ### For GPIO and LED manipulation
 * https://github.com/JamesBarwell/rpi-gpio.js
 * For GPIO pin reference use: https://pinout.xyz/
+* __sudo__: To turn LEDs on and off requires superuser (su) so make sure you run `sudo npm start` for this functionality 
 
 ### For the Displayotron HAT
 * https://github.com/jorisvervuurt/JVSDisplayOTron
