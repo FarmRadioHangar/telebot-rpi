@@ -17,7 +17,7 @@ Create some cool routines on our rpi that will be executed via your bot command 
   * __display__: Flash some text on our [display-o-tron hat](https://github.com/jorisvervuurt/JVSDisplayOTron).
   * __say__: Synthesize some text2speech into an audio file and play it on a speaker.
   * __led__: Turn some LED colors on or off
-  * Play an incoming telegram voice message or audio file on a speaker (may not require a keywork/command).
+  * Play an incoming telegram voice message or audio file on a speaker.
 
 ## Libraries we will be using:
 
