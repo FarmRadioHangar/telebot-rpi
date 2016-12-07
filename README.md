@@ -18,6 +18,8 @@ Create some cool routines on our rpi that will be executed via your bot command 
   * __say__: Synthesize some text2speech into an audio file and play it on a speaker.
   * __led__: Turn some LED colors on or off
   * Play an incoming telegram voice message or audio file on a speaker.
+  
+7. To test your implemention `npm start`
 
 ## Libraries we will be using:
 
@@ -39,3 +41,5 @@ Create some cool routines on our rpi that will be executed via your bot command 
 
 ### For Playing audio on the Pi
 * https://github.com/Ap0c/node-omxplayer
+
+
