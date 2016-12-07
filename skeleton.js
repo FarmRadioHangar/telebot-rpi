@@ -81,6 +81,10 @@ bot.onText(/\/display\s(red|green|blue|rainbow|yellow)\s(.+)/, function(message,
     case 'yellow':
       dothat.backlight.setToRGB(255, 255, 0);
       break;
+
+    case 'rainbow':
+      flashOutRainbow();
+      break;
     
     default:
       dothat.backlight.setToRGB(255, 255, 255);
@@ -90,7 +94,15 @@ bot.onText(/\/display\s(red|green|blue|rainbow|yellow)\s(.+)/, function(message,
 
   dothat.lcd.write(text);
 
-  // Insert your implementation here using the JVSDisplayOTron library.
+  function flashOutRainbow(){
+    dothat.backlight.setZoneToRGB(0, 255, 0, 0);
+    dothat.backlight.setZoneToRGB(1, 0, 255, 0);
+    dothat.backlight.setZoneToRGB(2, 0, 0, 255);
+    dothat.backlight.setZoneToRGB(3, 255, 0, 0);
+    dothat.backlight.setZoneToRGB(4, 0, 255, 0);
+    dothat.backlight.setZoneToRGB(5, 0, 0, 255);
+    dothat.kill(false);
+  }
 
 });
 
