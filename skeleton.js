@@ -118,13 +118,19 @@ bot.onText(/\/display\s(red|green|blue|rainbow|yellow)\s(.+)/, function(message,
  *
  */
 bot.onText(/\/say\s(.+)/, function(message, match) {
-
   var chatId = message.chat.id;
-
   var string = match[1];         // The text to be read out
 
   // Insert your implementation here using the Google TTS and Omx libraries.
-
+  googleTTS(string, 'en', 1).then(function (url) {
+    console.log(url);
+    var player = Omx();
+    //player.play()
+    player.newSource(url);
+  })
+.catch(function (err) {
+  console.error(err.stack);
+});
 });
 
 /*
@@ -137,8 +143,14 @@ bot.on('voice', function(message) {
 
   var chatId = message.chat.id;
 
-  // Insert your implementation here using the Omx library.
+  var downloadDir = '/home/pi/telebot-rpi/windvoices/';
+  bot.downloadFile(message.voice.file_id, downloadDir).then(function (filePath) {
+    var player = Omx();
+    player.newSource(filePath);
+  });
 
+  // Insert your implementation here using the Omx library.
+  console.log(message);
   // To play the audio clip, you first need to download the file using the
   // following API call: https://github.com/yagop/node-telegram-bot-api#TelegramBot+downloadFile
 
