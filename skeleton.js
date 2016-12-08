@@ -35,7 +35,7 @@ var bot = new TelegramBot(token, { polling: true });
 /*
  * Display some text on the Display-O-Tron hat (not the dot3k).
  *
- * For code examples, see: 
+ * For code examples, see:
  * https://github.com/jorisvervuurt/JVSDisplayOTron/tree/master/examples/dothat
  *
  * The command syntax on Telegram is as follows:
@@ -52,7 +52,6 @@ bot.onText(/\/display\s(red|green|blue|rainbow|yellow)\s(.+)/, function(message,
   // Set the display contrast to a better-readable value.
   dothat.lcd.setContrast(45);
 
-
   // Set all backlight LEDs to a hue value of 0.5.
   dothat.backlight.setToHue(0.6);
 
@@ -61,7 +60,7 @@ bot.onText(/\/display\s(red|green|blue|rainbow|yellow)\s(.+)/, function(message,
   var color = match[1];
   var text  = match[2];    // The text to display
 
-  console.log(color)
+  console.log(color);
   console.log(text);
 
   switch (color) {
@@ -85,11 +84,11 @@ bot.onText(/\/display\s(red|green|blue|rainbow|yellow)\s(.+)/, function(message,
     case 'rainbow':
       flashOutRainbow();
       break;
-    
+
     default:
       dothat.backlight.setToRGB(255, 255, 255);
       break;
-      
+
   }
 
   dothat.lcd.write(text);
@@ -163,7 +162,7 @@ bot.onText(/\/led\s(red|green|yellow)\s(on|off)/, function(message, match) {
 
   var chatId = message.chat.id;
 
-  var color  = match[1]; 
+  var color  = match[1];
   var state  = match[2];   // 'on' or 'off'
 
   // Insert your implementation here using the gpio library.
@@ -175,7 +174,7 @@ bot.onText(/\/led\s(red|green|yellow)\s(on|off)/, function(message, match) {
  *
  * The command syntax on Telegram is as follows:
  *
- *   /photo <filename> 
+ *   /photo <filename>
  *
  */
 bot.onText(/\/photo\s(.+)/, function(message, match) {
@@ -195,7 +194,7 @@ bot.onText(/\/photo\s(.+)/, function(message, match) {
 /*
  * Bonus assignment
  *
- * Go crazy and create your own bot service, e.g., /weather to get the 
+ * Go crazy and create your own bot service, e.g., /weather to get the
  * weather conditions in a city or location.
  *
  */
