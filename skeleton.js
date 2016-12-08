@@ -23,7 +23,7 @@ var googleTTS       = require('google-tts-api');
 var NodeWebcam      = require('node-webcam');
 
 /* Insert the Telegram token you received from @BotFather here */
-var token = 'insert_token_here';
+var token = '323183818:AAFYtnMuCxeFRZNF7sSk1XR-0Cxnpf-a8aQ';
 
 /* Instantiate the bot */
 var bot = new TelegramBot(token, { polling: true });
@@ -69,13 +69,19 @@ bot.onText(/\/display\s(red|green|blue|rainbow)\s(.+)/, function(message, match)
  *
  */
 bot.onText(/\/say\s(.+)/, function(message, match) {
-
   var chatId = message.chat.id;
-
   var string = match[1];         // The text to be read out
-
+    
   // Insert your implementation here using the Google TTS and Omx libraries.
-
+  googleTTS(string, 'en', 1).then(function (url) {
+    console.log(url);
+    var player = Omx();
+    //player.play()
+    player.newSource(url) 
+  })
+.catch(function (err) {
+  console.error(err.stack);
+});
 });
 
 /*
@@ -87,9 +93,15 @@ bot.onText(/\/say\s(.+)/, function(message, match) {
 bot.on('voice', function(message) {
 
   var chatId = message.chat.id;
+  
+  var downloadDir = '/home/pi/telebot-rpi/windvoices/';
+  bot.downloadFile(message.voice.file_id, downloadDir).then(function (filePath) {
+    var player = Omx();
+    player.newSource(filePath)
+  })
 
   // Insert your implementation here using the Omx library.
-
+  console.log(message)
   // To play the audio clip, you first need to download the file using the
   // following API call: https://github.com/yagop/node-telegram-bot-api#TelegramBot+downloadFile
 
