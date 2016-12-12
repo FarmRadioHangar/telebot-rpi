@@ -23,7 +23,7 @@ var googleTTS       = require('google-tts-api');
 var NodeWebcam      = require('node-webcam');
 
 /* Insert the Telegram token you received from @BotFather here */
-var token = '323183818:AAFYtnMuCxeFRZNF7sSk1XR-0Cxnpf-a8aQ';
+var token = '293313214:AAFwlEruamuMSRpDs7R40FQ4SaOphlhJh_0';
 
 /* Instantiate the bot */
 var bot = new TelegramBot(token, { polling: true });
@@ -35,7 +35,7 @@ var bot = new TelegramBot(token, { polling: true });
 /*
  * Display some text on the Display-O-Tron hat (not the dot3k).
  *
- * For code examples, see: 
+ * For code examples, see:
  * https://github.com/jorisvervuurt/JVSDisplayOTron/tree/master/examples/dothat
  *
  * The command syntax on Telegram is as follows:
@@ -45,14 +45,63 @@ var bot = new TelegramBot(token, { polling: true });
  * where color should be one of red, green, blue, or rainbow.
  *
  */
-bot.onText(/\/display\s(red|green|blue|rainbow)\s(.+)/, function(message, match) {
+bot.onText(/\/display\s(red|green|blue|rainbow|yellow)\s(.+)/, function(message, match) {
+
+  var dothat = new JVSDisplayOTron.DOTHAT();
+
+  // Set the display contrast to a better-readable value.
+  dothat.lcd.setContrast(45);
+
+  // Set all backlight LEDs to a hue value of 0.5.
+  dothat.backlight.setToHue(0.6);
 
   var chatId = message.chat.id;
 
   var color = match[1];
   var text  = match[2];    // The text to display
 
-  // Insert your implementation here using the JVSDisplayOTron library.
+  console.log(color);
+  console.log(text);
+
+  switch (color) {
+
+    case 'red':
+      dothat.backlight.setToRGB(255, 0, 0);
+      break;
+
+    case 'blue':
+      dothat.backlight.setToRGB(0, 0, 255);
+      break;
+
+    case 'green':
+      dothat.backlight.setToRGB(0, 255, 0);
+      break;
+
+    case 'yellow':
+      dothat.backlight.setToRGB(255, 255, 0);
+      break;
+
+    case 'rainbow':
+      flashOutRainbow();
+      break;
+
+    default:
+      dothat.backlight.setToRGB(255, 255, 255);
+      break;
+
+  }
+
+  dothat.lcd.write(text);
+
+  function flashOutRainbow(){
+    dothat.backlight.setZoneToRGB(0, 255, 0, 0);
+    dothat.backlight.setZoneToRGB(1, 0, 255, 0);
+    dothat.backlight.setZoneToRGB(2, 0, 0, 255);
+    dothat.backlight.setZoneToRGB(3, 255, 0, 0);
+    dothat.backlight.setZoneToRGB(4, 0, 255, 0);
+    dothat.backlight.setZoneToRGB(5, 0, 0, 255);
+    dothat.kill(false);
+  }
 
 });
 
@@ -71,13 +120,13 @@ bot.onText(/\/display\s(red|green|blue|rainbow)\s(.+)/, function(message, match)
 bot.onText(/\/say\s(.+)/, function(message, match) {
   var chatId = message.chat.id;
   var string = match[1];         // The text to be read out
-    
+
   // Insert your implementation here using the Google TTS and Omx libraries.
   googleTTS(string, 'en', 1).then(function (url) {
     console.log(url);
     var player = Omx();
     //player.play()
-    player.newSource(url) 
+    player.newSource(url);
   })
 .catch(function (err) {
   console.error(err.stack);
@@ -93,15 +142,15 @@ bot.onText(/\/say\s(.+)/, function(message, match) {
 bot.on('voice', function(message) {
 
   var chatId = message.chat.id;
-  
+
   var downloadDir = '/home/pi/telebot-rpi/windvoices/';
   bot.downloadFile(message.voice.file_id, downloadDir).then(function (filePath) {
     var player = Omx();
-    player.newSource(filePath)
-  })
+    player.newSource(filePath);
+  });
 
   // Insert your implementation here using the Omx library.
-  console.log(message)
+  console.log(message);
   // To play the audio clip, you first need to download the file using the
   // following API call: https://github.com/yagop/node-telegram-bot-api#TelegramBot+downloadFile
 
@@ -125,7 +174,7 @@ bot.onText(/\/led\s(red|green|yellow)\s(on|off)/, function(message, match) {
 
   var chatId = message.chat.id;
 
-  var color  = match[1]; 
+  var color  = match[1];
   var state  = match[2];   // 'on' or 'off'
 
   // Insert your implementation here using the gpio library.
@@ -137,7 +186,7 @@ bot.onText(/\/led\s(red|green|yellow)\s(on|off)/, function(message, match) {
  *
  * The command syntax on Telegram is as follows:
  *
- *   /photo <filename> 
+ *   /photo <filename>
  *
  */
 bot.onText(/\/photo\s(.+)/, function(message, match) {
@@ -157,7 +206,7 @@ bot.onText(/\/photo\s(.+)/, function(message, match) {
 /*
  * Bonus assignment
  *
- * Go crazy and create your own bot service, e.g., /weather to get the 
+ * Go crazy and create your own bot service, e.g., /weather to get the
  * weather conditions in a city or location.
  *
  */
